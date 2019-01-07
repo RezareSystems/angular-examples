@@ -19,7 +19,7 @@
 
   - sets up proxy for json-server API
 
-  ## Starting the application
+## Starting the application
 
-  To start the angular application run _ng serve_
-  To start the mock backend server run _npm run mockserver_
+To start the angular application run **ng serve**
+To start the mock backend server run **npm run mockserver**
