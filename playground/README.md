@@ -1,6 +1,6 @@
-Example application that shows various angular concepts, tools, libraries and many more.
+## Example application that shows various angular concepts, tools, libraries and many more.
 
-Includes examples showing:
+### Includes examples showing:
 * using ngrx for global app state management
 	* use of ngrx/entities for manipulating and querying entity collections
 	* use of ngrx/effects for handling asynchronous API calls with app state
