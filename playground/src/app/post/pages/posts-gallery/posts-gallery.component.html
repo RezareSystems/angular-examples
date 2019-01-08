@@ -1,0 +1,11 @@
+<table *ngIf="posts$ | async as posts">
+  <tbody>
+    <tr *ngFor="let p of posts">
+      <td>
+        <app-post-card [title]="p.title"
+                       [author]="p.authorFirstName + ' ' + p.authorLastName"
+                       [post]="p.post"></app-post-card>
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -16,8 +16,8 @@
 - linting typescript files using tslint
   - uses tslint plugin for Visual Studio Code
 - uses json-server for mocking backend API server
-
   - sets up proxy for json-server API
+- has both lazy-loaded and eagerly loaded modules
 
 ## Starting the application
 
