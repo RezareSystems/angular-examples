@@ -9,21 +9,21 @@ export function postReducer(
     case PostActionTypes.LoadPosts: {
       return {
         ...state,
-        isLoading: true,
+        loading: true,
         error: null
       };
     }
     case PostActionTypes.LoadPostsSuccess: {
       return postAdapter.addAll(action.payload, {
         ...state,
-        isLoading: false,
+        loading: false,
         error: null
       });
     }
     case PostActionTypes.LoadPostsFailure: {
       return {
         ...state,
-        isLoading: false,
+        loading: false,
         error: action.payload
       };
     }

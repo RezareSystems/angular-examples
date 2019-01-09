@@ -21,7 +21,12 @@ export const getPostById = (postId: number) =>
     }
   );
 
+export const getPostLoading = createSelector(
+  getPostFeatureSelector,
+  (state: PostState) => state.loading
+);
+
 export const getPostError = createSelector(
   getPostFeatureSelector,
-  (state: PostState) => state.isLoading
+  (state: PostState) => state.error
 );

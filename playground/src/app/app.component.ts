@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './core/services/api.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import * as fromRoot from './state';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +10,7 @@ import { ApiService } from './core/services/api.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'playground';
-
-  constructor(private api: ApiService) {}
+  constructor() {}
 
   ngOnInit() {}
 }

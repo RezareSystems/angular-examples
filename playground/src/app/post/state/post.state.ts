@@ -7,11 +7,11 @@ export const postAdapter: EntityAdapter<Post> = createEntityAdapter<Post>({
 });
 
 export interface PostState extends EntityState<Post> {
-  isLoading?: boolean;
+  loading: boolean;
   error?: any;
 }
 
 export const postInitialState: PostState = postAdapter.getInitialState({
-  isLoading: false,
+  loading: false,
   error: null
 });

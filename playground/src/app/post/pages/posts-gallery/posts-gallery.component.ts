@@ -13,7 +13,7 @@ import * as fromPost from '../../state';
 export class PostsGalleryComponent implements OnInit {
   posts$: Observable<Post[]>;
 
-  constructor(private store$: Store<fromPost.PostState.PostState>) {}
+  constructor(private store$: Store<fromPost.State>) {}
 
   ngOnInit() {
     this.posts$ = this.store$.pipe(

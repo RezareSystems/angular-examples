@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
+import { appReducer } from './state/app.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,9 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     CoreModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({
+      app: appReducer
+    }),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
       name: 'Playground Application Store DevTools',
