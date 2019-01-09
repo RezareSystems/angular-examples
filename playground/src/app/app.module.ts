@@ -9,11 +9,13 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 import { appReducer } from './state/app.reducer';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    SharedModule,
     CoreModule,
     AppRoutingModule,
     StoreModule.forRoot({

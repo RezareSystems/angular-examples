@@ -9,10 +9,11 @@ import { PostCardComponent } from './pages/posts-gallery/post-card/post-card.com
 import { PostService } from './services/post.service';
 import { postReducer } from './state/post.reducer';
 import { PostEffects } from './state/post.effects';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     PostRoutingModule,
     StoreModule.forFeature('post', postReducer),
     EffectsModule.forFeature([PostEffects])
