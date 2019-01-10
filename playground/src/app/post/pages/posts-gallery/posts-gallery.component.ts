@@ -12,12 +12,16 @@ import * as fromPost from '../../state';
 })
 export class PostsGalleryComponent implements OnInit {
   posts$: Observable<Post[]>;
+  loading$: Observable<boolean>;
 
   constructor(private store$: Store<fromPost.State>) {}
 
   ngOnInit() {
     this.posts$ = this.store$.pipe(
       select(fromPost.PostSelectors.getAllPostsSelector)
+    );
+    this.loading$ = this.store$.pipe(
+      select(fromPost.PostSelectors.getPostLoading)
     );
     this.store$.dispatch(new fromPost.PostActions.LoadPosts());
   }

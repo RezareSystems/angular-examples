@@ -1,6 +1,14 @@
 <div class="card">
   <div class="card-body">
-    <h5 class="card-title">{{ title }}</h5>
-    <p class="card-text">{{ post }}</p>
+    <ng-container *ngIf="empty else content">
+      <div class="placeholder-block">
+        <div class="placeholder-block__title"></div>
+        <div class="placeholder-block__post"></div>
+      </div>
+    </ng-container>
+    <ng-template #content>
+      <h5 class="card-title">{{ title }}</h5>
+      <p class="card-text">{{ post }}</p>
+    </ng-template>
   </div>
 </div>

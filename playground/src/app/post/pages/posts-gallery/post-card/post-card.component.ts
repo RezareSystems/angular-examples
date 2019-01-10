@@ -12,6 +12,8 @@ export class PostCardComponent implements OnInit {
   author: string;
   @Input()
   post: string;
+  @Input()
+  empty: boolean;
 
   constructor() {}
 
