@@ -1,10 +1,7 @@
-import { appInitialState, AppState } from './app.state';
+import { appInitialState, State } from './app.state';
 import { AppActions, AppActionTypes } from './app.actions';
 
-export function appReducer(
-  state = appInitialState,
-  action: AppActions
-): AppState {
+export function appReducer(state = appInitialState, action: AppActions): State {
   switch (action.type) {
     case AppActionTypes.SetLoading: {
       return {

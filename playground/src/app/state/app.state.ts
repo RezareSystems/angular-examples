@@ -1,7 +1,7 @@
-export interface AppState {
+export interface State {
   loading: boolean;
 }
 
-export const appInitialState: AppState = {
+export const appInitialState: State = {
   loading: false
 };

@@ -5,6 +5,7 @@
 - using ngrx for global app state management
   - use of ngrx/entities for manipulating and querying entity collections
   - use of ngrx/effects for handling asynchronous API calls with app state
+  - use of ngrx-store-freeze for development purposes which ensures state is not being mutated
 - unit testing with Jest
   - instructions for migrating existing Angular app using Jaminse/Karma to Jest
   - various examples of unit testing services and also testing state reducers

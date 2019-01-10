@@ -23,8 +23,11 @@ export class PostService {
   }
 
   dispatchFavouritePostAction(post: Post) {
-    post.favourite = !post.favourite;
-    this.store$.dispatch(new fromPost.PostActions.UpdatePost(post));
+    const copyPost = {
+      ...post,
+      favourite: !post.favourite
+    };
+    this.store$.dispatch(new fromPost.PostActions.UpdatePost(copyPost));
   }
 
   dispatchLoadPostAction() {
