@@ -1,7 +1,8 @@
 export interface Post {
   id: number;
   title: string;
-  authorFirstName: string;
-  authorLastName: string;
+  first_name: string;
+  last_name: string;
   post: string;
+  favourite: boolean;
 }

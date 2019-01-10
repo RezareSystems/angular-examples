@@ -19,6 +19,11 @@ export class ApiService {
     return this.http.get(url);
   }
 
+  putPost(post: any) {
+    const url = `${this.getRoute('posts')}/${post.id}`;
+    return this.http.put(url, post);
+  }
+
   private getRoute(route: string) {
     return `${this.baseRoute}/${route}`;
   }

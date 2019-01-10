@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-post-card',
@@ -13,9 +13,18 @@ export class PostCardComponent implements OnInit {
   @Input()
   post: string;
   @Input()
+  favourite: boolean;
+  @Input()
   empty: boolean;
+
+  @Output()
+  cardClick = new EventEmitter<void>();
 
   constructor() {}
 
   ngOnInit() {}
+
+  onClick() {
+    this.cardClick.emit();
+  }
 }

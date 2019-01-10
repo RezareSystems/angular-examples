@@ -4,6 +4,7 @@ import { Store, select } from '@ngrx/store';
 
 import { Post } from '../../models/post';
 import * as fromPost from '../../state';
+import { PostService } from '../../services/post.service';
 
 @Component({
   selector: 'app-posts-gallery',
@@ -14,7 +15,10 @@ export class PostsGalleryComponent implements OnInit {
   posts$: Observable<Post[]>;
   loading$: Observable<boolean>;
 
-  constructor(private store$: Store<fromPost.State>) {}
+  constructor(
+    private store$: Store<fromPost.State>,
+    private postService: PostService
+  ) {}
 
   ngOnInit() {
     this.posts$ = this.store$.pipe(
@@ -23,6 +27,10 @@ export class PostsGalleryComponent implements OnInit {
     this.loading$ = this.store$.pipe(
       select(fromPost.PostSelectors.getPostLoading)
     );
-    this.store$.dispatch(new fromPost.PostActions.LoadPosts());
+    this.postService.dispatchLoadPostAction();
+  }
+
+  onCardClick(post: Post) {
+    this.postService.dispatchFavouritePostAction(post);
   }
 }

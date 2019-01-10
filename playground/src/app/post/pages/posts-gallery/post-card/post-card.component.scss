@@ -1,8 +1,23 @@
 @mixin background-gradient {
-  background-image: linear-gradient(90deg, #ddd 0px, #e8e8e8 40px, #ddd 80px);
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
   background-size: 1900px;
+  background-repeat: no-repeat;
+  background-color: #f6f7f8;
 }
-
+@keyframes shine-lines {
+  0% {
+    background-position: -1970px;
+  }
+  100% {
+    background-position: 1970px;
+  }
+}
 .placeholder-block {
   .placeholder-block__title {
     border-radius: 5px;
@@ -12,7 +27,6 @@
     @include background-gradient;
     animation: shine-lines 1.5s infinite linear;
   }
-
   .placeholder-block__post {
     border-radius: 5px;
     width: 100%;
@@ -21,15 +35,16 @@
     animation: shine-lines 1.5s infinite linear;
   }
 }
-
-@keyframes shine-lines {
-  0% {
-    background-position: -140px;
+.post-card {
+  margin-bottom: 20px;
+  cursor: pointer;
+  .post-body {
+    .post-body__author {
+      text-align: right;
+      font-style: italic;
+    }
   }
-  40% {
-    background-position: 800px;
-  }
-  100% {
-    background-position: 1670px;
-  }
+}
+.ts-post-card--favourite {
+  background: gray;
 }

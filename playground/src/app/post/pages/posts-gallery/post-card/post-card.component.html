@@ -1,5 +1,7 @@
-<div class="card">
-  <div class="card-body">
+<div class="card post-card"
+     [class.ts-post-card--favourite]="favourite"
+     (click)="onClick()">
+  <div class="card-body post-body">
     <ng-container *ngIf="empty else content">
       <div class="placeholder-block">
         <div class="placeholder-block__title"></div>
@@ -9,6 +11,7 @@
     <ng-template #content>
       <h5 class="card-title">{{ title }}</h5>
       <p class="card-text">{{ post }}</p>
+      <p class="post-body__author">-{{ author }}</p>
     </ng-template>
   </div>
 </div>

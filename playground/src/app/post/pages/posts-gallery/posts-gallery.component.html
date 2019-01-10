@@ -1,21 +1,25 @@
-<table class="posts-table"
-       *ngIf="posts$ | async as posts">
-  <tbody>
-    <ng-container *ngIf="(loading$ | async) === false else loading;">
-      <tr *ngFor="let p of posts">
-        <td>
-          <app-post-card [title]="p.title"
-                         [author]="p.authorFirstName + ' ' + p.authorLastName"
-                         [post]="p.post"></app-post-card>
-        </td>
-      </tr>
-    </ng-container>
-    <ng-template #loading>
-      <tr *ngFor="let a of [1,2,3]">
-        <td>
-          <app-post-card [empty]="true"></app-post-card>
-        </td>
-      </tr>
-    </ng-template>
-  </tbody>
-</table>
+<div class="container">
+  <table class="posts-table"
+         *ngIf="posts$ | async as posts">
+    <tbody>
+      <ng-container *ngIf="(loading$ | async) === false else loading;">
+        <tr *ngFor="let p of posts">
+          <td>
+            <app-post-card [title]="p.title"
+                           [author]="p.first_name + ' ' + p.last_name"
+                           [post]="p.post"
+                           [favourite]="p.favourite"
+                           (cardClick)="onCardClick(p)"></app-post-card>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #loading>
+        <tr *ngFor="let a of [1,2,3]">
+          <td>
+            <app-post-card [empty]="true"></app-post-card>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>

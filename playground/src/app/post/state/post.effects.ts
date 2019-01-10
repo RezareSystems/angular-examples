@@ -26,4 +26,21 @@ export class PostEffects {
         )
     )
   );
+
+  @Effect()
+  updatePostEffect$: Observable<Action> = this.action$.pipe(
+    ofType<postActions.UpdatePost>(postActions.PostActionTypes.UpdatePost),
+    switchMap(action =>
+      this.postService.updatePost(action.post).pipe(
+        map(
+          post =>
+            new postActions.UpdatePostSuccess({
+              id: post.id,
+              changes: post
+            }),
+          catchError(error => of(new postActions.LoadPostsFailure(error)))
+        )
+      )
+    )
+  );
 }
