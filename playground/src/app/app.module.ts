@@ -4,6 +4,11 @@ import { StoreModule, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
+import {
+  StoreRouterConnectingModule,
+  routerReducer,
+  RouterReducerState
+} from '@ngrx/router-store';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -15,10 +20,12 @@ import * as fromApp from './state';
 
 export interface OverallState {
   app: fromApp.State;
+  router: RouterReducerState;
 }
 
 export const reducers: ActionReducerMap<OverallState> = {
-  app: appReducer
+  app: appReducer,
+  router: routerReducer
 };
 
 export const metaReducers: MetaReducer<OverallState>[] = !environment.production
@@ -38,7 +45,8 @@ export const metaReducers: MetaReducer<OverallState>[] = !environment.production
       name: 'Playground Application Store DevTools',
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+    StoreRouterConnectingModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })

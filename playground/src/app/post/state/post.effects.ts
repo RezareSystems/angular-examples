@@ -14,7 +14,6 @@ export class PostEffects {
   @Effect()
   loadPostsEffect$: Observable<Action> = this.action$.pipe(
     ofType<postActions.LoadPosts>(postActions.PostActionTypes.LoadPosts),
-    startWith(new postActions.LoadPosts()),
     switchMap(action =>
       this.postService
         .getPosts()

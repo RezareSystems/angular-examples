@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: 'posts', loadChildren: 'src/app/post/post.module#PostModule' },
-  { path: '', pathMatch: 'full', redirectTo: 'posts' }
+  { path: '', pathMatch: 'full', redirectTo: 'about' }
 ];
 
 @NgModule({

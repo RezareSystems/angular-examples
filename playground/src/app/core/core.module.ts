@@ -7,11 +7,13 @@ import { ApiService } from './services/api.service';
 import { HeaderComponent } from './components/header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './components/footer/footer.component';
+import { AboutComponent } from './pages/about/about.component';
+import { CoreRoutingModule } from './core-routing.module';
 
 @NgModule({
-  imports: [SharedModule, HttpClientModule, RouterModule],
+  imports: [SharedModule, HttpClientModule, RouterModule, CoreRoutingModule],
   providers: [ApiService],
-  declarations: [HeaderComponent, FooterComponent],
+  declarations: [HeaderComponent, FooterComponent, AboutComponent],
   exports: [HeaderComponent, FooterComponent]
 })
 export class CoreModule {
