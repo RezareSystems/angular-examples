@@ -19,7 +19,7 @@ export class PostService {
   }
 
   updatePost(post: Post) {
-    return this.apiService.putPost(post) as Observable<Post>;
+    return this.apiService.putPost(post).pipe(delay(500)) as Observable<Post>;
   }
 
   dispatchFavouritePostAction(post: Post) {
