@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import { ApiService } from '../../core/services/api.service';
@@ -19,15 +19,15 @@ export class PostService {
   }
 
   updatePost(post: Post) {
-    return this.apiService.putPost(post).pipe(delay(500)) as Observable<Post>;
+    // Simulate error on server by sending post with negative id
+    const throwError = Math.random() > 0.5;
+    return this.apiService
+      .putPost(throwError ? { ...post, id: -1 } : post)
+      .pipe(delay(1500)) as Observable<Post>;
   }
 
   dispatchFavouritePostAction(post: Post) {
-    const copyPost = {
-      ...post,
-      favourite: !post.favourite
-    };
-    this.store$.dispatch(new fromPost.PostActions.UpdatePost(copyPost));
+    this.store$.dispatch(new fromPost.PostActions.FavouritePost(post.id));
   }
 
   dispatchLoadPostAction() {

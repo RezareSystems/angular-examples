@@ -7,9 +7,9 @@ export enum PostActionTypes {
   LoadPosts = '[Post] Load Posts',
   LoadPostsSuccess = '[Post] Load Posts Success',
   LoadPostsFailure = '[Post] Load Posts Failure',
-  UpdatePost = '[Post] Update Post',
-  UpdatePostSuccess = '[Post] Update Post Success',
-  UpdatePostFailure = '[Post] Update Post Failure'
+  FavouritePost = '[Post] Favourite Post',
+  FavouritePostSuccess = '[Post] Favourite Post Success',
+  FavouritePostFailure = '[Post] Favourite Post Failure'
 }
 
 export class LoadPosts implements Action {
@@ -26,25 +26,24 @@ export class LoadPostsFailure implements Action {
   constructor(public payload: any) {}
 }
 
-export class UpdatePost implements Action {
-  readonly type = PostActionTypes.UpdatePost;
-  constructor(public post: Post) {}
+export class FavouritePost implements Action {
+  readonly type = PostActionTypes.FavouritePost;
+  constructor(public postId: number) {}
 }
 
-export class UpdatePostSuccess implements Action {
-  readonly type = PostActionTypes.UpdatePostSuccess;
-  constructor(public postUpdate: Update<Post>) {}
+export class FavouritePostSuccess implements Action {
+  readonly type = PostActionTypes.FavouritePostSuccess;
 }
 
-export class UpdatePostFailure implements Action {
-  readonly type = PostActionTypes.UpdatePostFailure;
-  constructor(public error: any) {}
+export class FavouritePostFailure implements Action {
+  readonly type = PostActionTypes.FavouritePostFailure;
+  constructor(public postId: number, public error: any) {}
 }
 
 export type PostActions =
   | LoadPosts
   | LoadPostsSuccess
   | LoadPostsFailure
-  | UpdatePost
-  | UpdatePostSuccess
-  | UpdatePostFailure;
+  | FavouritePost
+  | FavouritePostSuccess
+  | FavouritePostFailure;

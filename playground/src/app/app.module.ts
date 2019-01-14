@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { StoreModule, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { ToastrModule } from 'ngx-toastr';
 import {
   StoreRouterConnectingModule,
   routerReducer,
@@ -35,6 +37,7 @@ export const metaReducers: MetaReducer<OverallState>[] = !environment.production
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     SharedModule,
     CoreModule,
@@ -46,7 +49,8 @@ export const metaReducers: MetaReducer<OverallState>[] = !environment.production
       maxAge: 25,
       logOnly: environment.production
     }),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   bootstrap: [AppComponent]
 })
