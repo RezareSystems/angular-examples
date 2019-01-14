@@ -20,10 +20,10 @@ export class PostService {
 
   updatePost(post: Post) {
     // Simulate error on server by sending post with negative id
-    const throwError = Math.random() > 0.5;
+    const throwError = Math.random() > 0.8;
     return this.apiService
       .putPost(throwError ? { ...post, id: -1 } : post)
-      .pipe(delay(1500)) as Observable<Post>;
+      .pipe(delay(500)) as Observable<Post>;
   }
 
   dispatchFavouritePostAction(post: Post) {

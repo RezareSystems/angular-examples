@@ -40,7 +40,6 @@ export class PostsGalleryComponent implements OnInit, OnDestroy {
           filter(error => error != null)
         )
         .subscribe(error => {
-          console.log('sadfsafas', error);
           this.toastrService.error(
             'Error updating post on the server',
             'Error'
