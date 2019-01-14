@@ -19,8 +19,8 @@ export class PostService {
   }
 
   updatePost(post: Post) {
-    // Simulate error on server by sending post with negative id
-    const throwError = Math.random() > 0.8;
+    // Simulate 3% error rate on server by sending post with negative id
+    const throwError = Math.random() > 0.97;
     return this.apiService
       .putPost(throwError ? { ...post, id: -1 } : post)
       .pipe(delay(500)) as Observable<Post>;
