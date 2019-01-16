@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { delay } from 'rxjs/operators';
 
-import { CoreModule } from '../core.module';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class ApiService {
 
   getPosts() {
     const url = this.getRoute('posts');
-    return this.http.get(url);
+    return this.http.get(url).pipe(delay(1500));
   }
 
   getPost(id: number) {

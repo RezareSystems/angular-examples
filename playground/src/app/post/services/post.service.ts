@@ -15,7 +15,7 @@ export class PostService {
   ) {}
 
   getPosts() {
-    return this.apiService.getPosts().pipe(delay(1500)) as Observable<Post[]>;
+    return this.apiService.getPosts() as Observable<Post[]>;
   }
 
   updatePost(post: Post) {

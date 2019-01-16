@@ -8,8 +8,9 @@
   - use of ngrx-store-freeze for development purposes which ensures state is not being mutated
   - demonstration of **optimistic updates** with ngrx
 - unit testing with Jest
-  - instructions for migrating existing Angular app using Jaminse/Karma to Jest
+  - instructions for migrating existing Angular app using Jasmine/Karma to Jest
   - various examples of unit testing services and also testing state reducers
+  - run a coverage report using ng test --coverage
 - e2e testing with protractor
   - various examples of end to end testing with protractor
 - using prettier for formatting typescript and stylesheets
