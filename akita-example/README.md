@@ -1,6 +1,6 @@
 # Akita example application
 
-## Akita is state management library for JS applications. It is an alternative to NGRX, NGXS or using plain RXJS (Akita is built on top of RXJS) for managing application state
+## Akita is a state management library for JS applications. It is an alternative to NGRX, NGXS or using plain RXJS (Akita is built on top of RXJS) for managing application state
 
 ### Akita encourages simplicity by reducing boilerplate code and the learning curve seen from using ngrx
 
