@@ -49,4 +49,8 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
     });
     this.subs.push(sub);
   }
+
+  onFavoriteClick(product: Product) {
+    this.productService.setProductFavorite(product.id).subscribe();
+  }
 }

@@ -1,9 +1,13 @@
 <div class="card">
   <img class="card-img-top img-fluid"
-       src="{{ url }}"
-       alt="{{ name }}">
+       src="{{ product.imgUrl }}"
+       alt="{{ product.name }}">
   <div class="card-body">
-    <h4 class="card-title">{{ name }}</h4>
-    <h5 class="card-text">{{ price | currency }}</h5>
+    <h4 class="card-title">{{ product.name }}</h4>
+    <h5 class="card-text">{{ product.price | currency }}</h5>
+    <br />
+    <a href="javascript:void(0)"
+       class="btn btn-primary"
+       (click)="favorite()">{{ (product.favorite) ? 'Unfavorite' : 'Favorite' }}</a>
   </div>
 </div>

@@ -39,6 +39,15 @@ export class ApiService {
       .pipe(catchError(this.handleUnauthorized.bind(this)));
   }
 
+  putProduct(id: number, product: any) {
+    const url = `${this.getRoute('products')}/${id}`;
+    return this.http.put(url, product, {
+      headers: {
+        Authorization: this.getBearerToken()
+      }
+    });
+  }
+
   authLogin(model: { email: string; password: string }) {
     const url = `${this.getRoute('auth/login')}`;
     return this.http.post(url, model);

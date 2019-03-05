@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Product } from '../../state';
 
 @Component({
   selector: 'app-product-list-item',
@@ -6,11 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product-list-item.component.scss']
 })
 export class ProductListItemComponent implements OnInit {
-  @Input() url: string;
-  @Input() name: string;
-  @Input() price: number;
+  @Input() product: Product;
+  @Output() favoriteClick = new EventEmitter<Product>();
 
   constructor() {}
 
   ngOnInit() {}
+
+  favorite() {
+    this.favoriteClick.emit(this.product);
+  }
 }

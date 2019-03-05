@@ -15,4 +15,8 @@ export class ProductDataService {
   getProduct(id: number): Observable<Product> {
     return <Observable<Product>>this.apiService.getProduct(id);
   }
+
+  updateProduct(id: number, product: Product) {
+    return <Observable<Product>>this.apiService.putProduct(id, product);
+  }
 }
