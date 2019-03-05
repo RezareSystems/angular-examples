@@ -329,3 +329,5 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 playground/json-server/data.json
+akita-example/db.json
+akita-example/users.json
