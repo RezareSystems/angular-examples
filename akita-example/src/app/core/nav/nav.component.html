@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-sm bg-light">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link"
+         routerLink=""
+         routerLinkActive="active">Home</a>
+    </li>
+    <li class="nav-item"
+        *ngIf="(isAuthenticated$ | async) == true">
+      <a class="nav-link"
+         routerLink="products"
+         routerLinkActive="active">Products</a>
+    </li>
+  </ul>
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item"
+        *ngIf="(isAuthenticated$ | async) == false">
+      <a class="nav-link"
+         routerLink="login"
+         routerLinkActive="active">Login</a>
+    </li>
+    <ng-container *ngIf="(isAuthenticated$ | async) == true">
+      <li class="nav-item">
+        <span class="navbar-text"
+              *ngIf="userDetails$ | async as userDetails">
+          WELCOME {{ userDetails.name | uppercase }}! -
+        </span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"
+           href="javascript:void()"
+           (click)="logout()">
+          Logout
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+</nav>

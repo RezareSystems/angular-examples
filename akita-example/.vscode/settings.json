@@ -1,0 +1,7 @@
+{
+    "html.format.wrapAttributes": "force-aligned",
+    "prettier.disableLanguages": [
+        "html"
+    ],
+    "editor.formatOnSave": true
+}

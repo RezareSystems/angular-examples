@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="form-group">
+    <input type="text"
+           class="form-control"
+           id="search"
+           placeholder="Search by name"
+           #searchInput>
+  </div>
+  <div *ngIf="filteredProducts$ | async as products;"
+       class="card-deck">
+    <app-product-list-item *ngFor="let p of products; trackBy: trackByFn"
+                           [url]="p.imgUrl"
+                           [name]="p.name"
+                           [price]="p.price"></app-product-list-item>
+  </div>
+</div>
