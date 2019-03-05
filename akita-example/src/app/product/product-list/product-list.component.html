@@ -4,8 +4,12 @@
            class="form-control"
            id="search"
            placeholder="Search by name"
-           #searchInput>
+           #searchInput
+           [value]="searchFilter$ | async">
   </div>
+  <button type="button"
+          (click)="toggleFavoriteOnly()"
+          class="btn btn-primary">{{ (!(favoriteOnly$ | async)) ? 'Show favorites only' : 'Show all' }}</button>
   <div *ngIf="filteredProducts$ | async as products;"
        class="card-deck">
     <app-product-list-item *ngFor="let p of products; trackBy: trackByFn"

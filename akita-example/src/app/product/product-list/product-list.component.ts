@@ -20,6 +20,8 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private subs: Subscription[] = [];
 
+  searchFilter$: Observable<string>;
+  favoriteOnly$: Observable<boolean>;
   products$: Observable<Product[]>;
   filteredProducts$: Observable<Product[]>;
 
@@ -33,6 +35,8 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.productService.getProducts().subscribe();
     // Set up observables
     this.filteredProducts$ = this.productQuery.filteredProducts$;
+    this.searchFilter$ = this.productQuery.searchFilter$;
+    this.favoriteOnly$ = this.productQuery.favoritesOnly$;
   }
 
   ngOnDestroy() {
@@ -52,5 +56,9 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
 
   onFavoriteClick(product: Product) {
     this.productService.setProductFavorite(product.id).subscribe();
+  }
+
+  toggleFavoriteOnly() {
+    this.productService.updateFavoritesOnly();
   }
 }

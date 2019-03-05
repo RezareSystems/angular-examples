@@ -35,6 +35,11 @@ export class ProductService {
     this.productStore.updateFilter(searchFilter);
   }
 
+  updateFavoritesOnly() {
+    const fav = this.productQuery.getValue().ui.favoritesOnly;
+    this.productStore.updateFavoritesOnly(!fav);
+  }
+
   setProductFavorite(id: number) {
     // Below is an example of optimistic update (does not wait for response from server)
     // If server call unsuccessful, it would just rollback the change it made on the state.

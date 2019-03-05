@@ -6,11 +6,12 @@ import { Product } from './product.model';
 export interface ProductState extends EntityState<Product> {
   ui: {
     searchFilter: string;
+    favoritesOnly: boolean;
   };
 }
 
 const initialState = {
-  ui: { searchFilter: null }
+  ui: { searchFilter: null, favoritesOnly: false }
 };
 
 @Injectable()
@@ -21,6 +22,24 @@ export class ProductStore extends EntityStore<ProductState, Product> {
   }
 
   updateFilter(searchFilter: string) {
-    this.updateRoot({ ui: { searchFilter } });
+    this.updateRoot(state => {
+      return {
+        ui: {
+          searchFilter: searchFilter,
+          favoritesOnly: state.ui.favoritesOnly
+        }
+      };
+    });
+  }
+
+  updateFavoritesOnly(favoritesOnly: boolean) {
+    this.updateRoot(state => {
+      return {
+        ui: {
+          searchFilter: state.ui.searchFilter,
+          favoritesOnly: favoritesOnly
+        }
+      };
+    });
   }
 }
