@@ -8,12 +8,17 @@
            [value]="searchFilter$ | async">
   </div>
   <button type="button"
+          (click)="addProduct()"
+          class="btn btn-primary">Add new product</button>
+  <button type="button"
           (click)="toggleFavoriteOnly()"
           class="btn btn-primary">{{ (!(favoriteOnly$ | async)) ? 'Show favorites only' : 'Show all' }}</button>
   <div *ngIf="filteredProducts$ | async as products;"
        class="card-deck">
     <app-product-list-item *ngFor="let p of products; trackBy: trackByFn"
                            [product]="p"
-                           (favoriteClick)="onFavoriteClick($event)"></app-product-list-item>
+                           (favoriteClick)="onFavoriteClick($event)"
+                           (deleteClick)="onDeleteClick($event)"></app-product-list-item>
   </div>
 </div>
+<app-product-modal #productModal></app-product-modal>

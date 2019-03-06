@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { ApiService } from './services/api.service';
 import { SharedModule } from '../shared/shared.module';
@@ -10,8 +11,13 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 @NgModule({
   exports: [NavComponent],
-  imports: [HttpClientModule, SharedModule],
+  imports: [HttpClientModule, SharedModule, ModalModule.forRoot()],
   providers: [ApiService],
-  declarations: [LoginComponent, NavComponent, HomeComponent, UnauthorizedComponent]
+  declarations: [
+    LoginComponent,
+    NavComponent,
+    HomeComponent,
+    UnauthorizedComponent
+  ]
 })
 export class CoreModule {}

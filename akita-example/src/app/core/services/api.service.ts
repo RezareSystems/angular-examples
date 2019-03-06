@@ -39,9 +39,27 @@ export class ApiService {
       .pipe(catchError(this.handleUnauthorized.bind(this)));
   }
 
+  postProduct(product: any) {
+    const url = this.getRoute('products');
+    return this.http.post(url, product, {
+      headers: {
+        Authorization: this.getBearerToken()
+      }
+    });
+  }
+
   putProduct(id: number, product: any) {
     const url = `${this.getRoute('products')}/${id}`;
     return this.http.put(url, product, {
+      headers: {
+        Authorization: this.getBearerToken()
+      }
+    });
+  }
+
+  deleteProduct(id: number) {
+    const url = `${this.getRoute('products')}/${id}`;
+    return this.http.delete(url, {
       headers: {
         Authorization: this.getBearerToken()
       }

@@ -9,6 +9,7 @@ import { Product } from '../../state';
 export class ProductListItemComponent implements OnInit {
   @Input() product: Product;
   @Output() favoriteClick = new EventEmitter<Product>();
+  @Output() deleteClick = new EventEmitter<Product>();
 
   constructor() {}
 
@@ -16,5 +17,9 @@ export class ProductListItemComponent implements OnInit {
 
   favorite() {
     this.favoriteClick.emit(this.product);
+  }
+
+  delete() {
+    this.deleteClick.emit(this.product);
   }
 }

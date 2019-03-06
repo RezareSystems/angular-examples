@@ -19,4 +19,12 @@ export class ProductDataService {
   updateProduct(id: number, product: Product) {
     return <Observable<Product>>this.apiService.putProduct(id, product);
   }
+
+  addProduct(product: Product) {
+    return <Observable<Product>>this.apiService.postProduct(product);
+  }
+
+  deleteProduct(id: number) {
+    return this.apiService.deleteProduct(id);
+  }
 }

@@ -7,9 +7,10 @@ import {
   ElementRef
 } from '@angular/core';
 import { Observable, fromEvent, Subscription } from 'rxjs';
+import { map, debounceTime } from 'rxjs/operators';
 
 import { ProductService, ProductQuery, Product } from '../state';
-import { map, debounceTime } from 'rxjs/operators';
+import { ProductModalComponent } from '../product-modal/product-modal.component';
 
 @Component({
   templateUrl: './product-list.component.html',
@@ -17,6 +18,7 @@ import { map, debounceTime } from 'rxjs/operators';
 })
 export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
+  @ViewChild('productModal') productModal: ProductModalComponent;
 
   private subs: Subscription[] = [];
 
@@ -58,7 +60,17 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.productService.setProductFavorite(product.id).subscribe();
   }
 
+  onDeleteClick(product: Product) {
+    this.productService.deleteProduct(product.id).subscribe();
+  }
+
   toggleFavoriteOnly() {
     this.productService.updateFavoritesOnly();
+  }
+
+  addProduct() {
+    this.productModal.addProduct().then(() => {
+      // TODO do something
+    });
   }
 }
