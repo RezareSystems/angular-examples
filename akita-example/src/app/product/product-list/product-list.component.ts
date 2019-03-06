@@ -64,6 +64,12 @@ export class ProductListComponent implements OnInit, OnDestroy, AfterViewInit {
     this.productService.deleteProduct(product.id).subscribe();
   }
 
+  onEditClick(product: Product) {
+    this.productModal.editProduct(product).then(() => {
+      // TODO do something
+    });
+  }
+
   toggleFavoriteOnly() {
     this.productService.updateFavoritesOnly();
   }

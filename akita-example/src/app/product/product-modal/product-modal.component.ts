@@ -52,14 +52,18 @@ export class ProductModalComponent implements OnInit {
 
   save() {
     const formValue = this.productForm.value;
-    const newProduct: Product = {
+    const product: Product = {
       id: formValue.id,
       favorite: formValue.favorite,
       imgUrl: formValue.imgUrl,
       name: formValue.name,
       price: formValue.price
     };
-    this.productService.addProduct(newProduct).subscribe(
+    const obs$ =
+      product.id != null
+        ? this.productService.editProduct(product)
+        : this.productService.addProduct(product);
+    obs$.subscribe(
       success => {
         this.hide();
         this.currentResolveFunc(success);

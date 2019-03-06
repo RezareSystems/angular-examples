@@ -95,6 +95,32 @@ export class ProductService {
     return request;
   }
 
+  editProduct(product: Product) {
+    const request = of('').pipe(
+      tap(() => this.productStore.upsert(product.id, product)),
+      mergeMap(() =>
+        this.productDataSrevice.updateProduct(product.id, product)
+      ),
+      catchError(error => {
+        this.stateHistory.undo();
+        return EMPTY;
+      })
+    );
+
+    // const request = this.productDataSrevice
+    //   .updateProduct(product.id, product)
+    //   .pipe(
+    //     tap(p => {
+    //       this.productStore.upsert(p.id, p);
+    //     }),
+    //     catchError(error => {
+    //       this.stateHistory.undo();
+    //       return EMPTY;
+    //     })
+    //   );
+    return request;
+  }
+
   setProductFavorite(id: number) {
     // Below is an example of optimistic update (does not wait for response from server)
     // If server call unsuccessful, it would just rollback the change it made on the state.

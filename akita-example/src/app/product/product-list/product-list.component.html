@@ -18,7 +18,8 @@
     <app-product-list-item *ngFor="let p of products; trackBy: trackByFn"
                            [product]="p"
                            (favoriteClick)="onFavoriteClick($event)"
-                           (deleteClick)="onDeleteClick($event)"></app-product-list-item>
+                           (deleteClick)="onDeleteClick($event)"
+                           (editClick)="onEditClick($event)"></app-product-list-item>
   </div>
 </div>
 <app-product-modal #productModal></app-product-modal>

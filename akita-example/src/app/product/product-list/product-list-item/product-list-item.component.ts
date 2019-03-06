@@ -10,6 +10,7 @@ export class ProductListItemComponent implements OnInit {
   @Input() product: Product;
   @Output() favoriteClick = new EventEmitter<Product>();
   @Output() deleteClick = new EventEmitter<Product>();
+  @Output() editClick = new EventEmitter<Product>();
 
   constructor() {}
 
@@ -21,5 +22,9 @@ export class ProductListItemComponent implements OnInit {
 
   delete() {
     this.deleteClick.emit(this.product);
+  }
+
+  edit() {
+    this.editClick.emit(this.product);
   }
 }
